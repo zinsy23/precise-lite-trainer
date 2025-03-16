@@ -138,10 +138,12 @@ class PreciseTrainer:
             verbose=1
         )
         if convert:
-            return self.convert(self.path, f"{self.path}/model.tflite")
+            model_dir = os.path.dirname(self.path)
+            tflite_path = os.path.join(model_dir, "model.tflite")
+            return self.convert(self.path, tflite_path)
         else:
-            self.model.save(self.path + ".h5")
-            return self.path + ".h5"
+            self.model.save(self.path)
+            return self.path
 
     def train_optimized(self, trials_name=".cache/trials", cycles=50, loss_bias=0.8, convert=True, backend="mixture"):
         from bbopt import BlackBoxOptimizer
@@ -537,17 +539,14 @@ class PreciseTrainer:
         """
         print('Converting', model_path, 'to', out_file, '...')
 
-        out_dir, filename = os.path.split(out_file)
-        out_dir = out_dir or '.'
+        out_dir = os.path.dirname(out_file)
         os.makedirs(out_dir, exist_ok=True)
 
         # Load custom loss function with model
         model = load_model(model_path, custom_objects={'weighted_log_loss': weighted_log_loss})
         model.summary()
 
-        # Support for freezing Keras models to .pb has been removed in TF 2.0.
-
-        # Converting instead to TFLite model
+        # Converting to TFLite model
         print('Starting TFLite conversion.')
         converter = tf.lite.TFLiteConverter.from_keras_model(model)
         converter.target_ops = [tf.lite.OpsSet.TFLITE_BUILTINS,
