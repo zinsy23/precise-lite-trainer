@@ -1,5 +1,4 @@
 from precise_trainer import PreciseTrainer
-from precise_trainer.model import ModelParams
 
 model_name = "computer"
 folder = f"computer/{model_name}"  # dataset here

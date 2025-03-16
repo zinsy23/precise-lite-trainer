@@ -33,6 +33,7 @@ from precise_trainer.functions import weighted_log_loss
 from precise_trainer.model import get_model
 from precise_trainer.stats import Stats
 from precise_trainer.train_data import TrainData
+from .model import ModelParams
 
 
 class PreciseTrainer:
