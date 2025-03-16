@@ -3,3 +3,4 @@ bbopt==1.0
 wavio
 pyache
 click
+sonopy
