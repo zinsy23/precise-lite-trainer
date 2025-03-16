@@ -2,7 +2,7 @@ from precise_trainer import PreciseTrainer
 
 model_name = "computer"
 folder = f"computer/{model_name}"  # dataset here
-model_path = f"computer/model/{model_name}"  # save here
+model_path = f"computer/model/{model_name}.keras"  # save here
 log_dir = f"logs/fit/{model_name}"  # for tensorboard
 
 # train a model
