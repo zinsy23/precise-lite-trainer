@@ -134,7 +134,7 @@ class PreciseTrainer:
             train_inputs, train_outputs, self.batch_size,
             self.epoch + self.train_epochs, validation_data=self.test_data,
             initial_epoch=self.epoch, callbacks=self.callbacks,
-            use_multiprocessing=True, validation_freq=5,
+            validation_freq=5,
             verbose=1
         )
         if convert:
@@ -233,7 +233,7 @@ class PreciseTrainer:
                 train_inputs, train_outputs, self.batch_size,
                 self.epoch + mini_epochs, validation_data=self.test_data,
                 initial_epoch=self.epoch, callbacks=self.callbacks,
-                use_multiprocessing=True, validation_freq=5,
+                validation_freq=5,
                 verbose=1
             )
             self.epoch += mini_epochs
@@ -294,7 +294,7 @@ class PreciseTrainer:
                 train_inputs, train_outputs, self.batch_size,
                 self.epoch + mini_epochs, validation_data=self.test_data,
                 initial_epoch=self.epoch, callbacks=self.callbacks,
-                use_multiprocessing=True, validation_freq=5,
+                validation_freq=5,
                 verbose=1
             )
             self.epoch += mini_epochs
@@ -313,7 +313,7 @@ class PreciseTrainer:
                 train_inputs, train_outputs, self.batch_size,
                 self.epoch + mini_epochs, validation_data=self.test_data,
                 initial_epoch=self.epoch, callbacks=self.callbacks,
-                use_multiprocessing=True, validation_freq=5,
+                validation_freq=5,
                 verbose=1
             )
             self.epoch += mini_epochs
